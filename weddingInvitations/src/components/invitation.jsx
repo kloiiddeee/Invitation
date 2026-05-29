@@ -32,7 +32,6 @@ export default function Invitation() {
   return (
     <div className="h-screen w-screen bg-[#04120b] flex flex-col items-center justify-center p-6 text-center select-none antialiased relative overflow-hidden">
       
-      {/* Web Font Imports & Custom Keyframe Mechanics */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500&family=Mr+De+Haviland&family=Montserrat:wght@300;400;500;600&display=swap');
         
@@ -103,7 +102,7 @@ export default function Invitation() {
               width: piece.size,
               height: piece.size,
               backgroundColor: piece.color,
-              borderRadius: piece.isRound ? '50%' : '0% 80% 20% 80%', // Alternates between droplets and leaf-like shapes
+              borderRadius: piece.isRound ? '50%' : '0% 80% 20% 80%', 
               transform: 'rotate(45deg)',
             }}
           />
@@ -141,7 +140,7 @@ export default function Invitation() {
           </p>
         </div>
 
-        {/* --- MAIN HORIZONTAL CARD CONTAINER --- */}
+
         <div 
           className="animate-reveal relative w-full max-w-[840px] aspect-[1.75/1] max-h-[460px] bg-[#f4f2eb] text-[#0d2e20] rounded-[2rem] px-8 py-10 md:px-14 md:py-12 shadow-[0_30px_70px_rgba(0,0,0,0.8)] border border-white/10 flex flex-col items-center justify-center box-border transform transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)] group/card"
           style={{ animationDelay: '750ms' }}
@@ -162,7 +161,8 @@ export default function Invitation() {
             <path d="M 13 52 Q 21 44 25 52 Q 21 60 13 52 Z" stroke="#c29f53" strokeWidth="0.75" />
           </svg>
 
-          {/* CARD CONTENT */}
+          
+
           <div className="flex flex-col items-center text-center w-full max-w-2xl z-10">
             
             <p 
@@ -179,7 +179,7 @@ export default function Invitation() {
               Neille & Camille
             </h2>
             
-            {/* Reference Ornamental Line Split */}
+            55
             <div 
               className="animate-reveal w-full max-w-[260px] my-3 flex items-center justify-center opacity-90"
               style={{ animationDelay: '1200ms' }}

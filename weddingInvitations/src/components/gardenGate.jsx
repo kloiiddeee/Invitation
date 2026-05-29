@@ -32,7 +32,7 @@ export default function GateInvitation({ isOpen, isOpening, openInvitation }) {
 
       {!isOpen && (
         <div className="fixed inset-0 z-50 flex overflow-hidden bg-[#04120b]">
-          {/* --- AMBIENT GARDEN BACKGROUND --- */}
+         
           <div className="absolute inset-0 bg-gradient-to-br from-[#061a10] via-[#04120b] to-[#020805]" />
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-[15%] -left-[10%] w-[60vw] h-[60vw] bg-[#1a422a] rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-pulse" />
