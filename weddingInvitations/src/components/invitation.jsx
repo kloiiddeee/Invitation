@@ -178,8 +178,7 @@ export default function Invitation() {
             >
               Neille & Camille
             </h2>
-            
-            55
+          
             <div 
               className="animate-reveal w-full max-w-[260px] my-3 flex items-center justify-center opacity-90"
               style={{ animationDelay: '1200ms' }}
