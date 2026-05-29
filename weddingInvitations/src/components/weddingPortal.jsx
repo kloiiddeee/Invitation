@@ -732,50 +732,54 @@ export default function WeddingPortal() {
 
       
       {/* Story Modal */}
-      {storyOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2c3e34]/60 backdrop-blur-md" onClick={() => setStoryOpen(false)}>
-        
-        <div 
-          className="relative w-full max-w-2xl bg-[#fdfbf7] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-[1px] border-[#c29f53]/30 rounded-sm"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="border border-[#c29f53]/20 h-full w-full p-8 md:p-10 flex flex-col items-center justify-center relative">
-            
-            {/* CLOSE BUTTON */}
-            {/* CLOSE BUTTON */}
-<button
-  onClick={() => setStoryOpen(false)}
-  className="absolute top-5 right-5 w-10 h-10 rounded-full bg-[#2c3e34]/5 hover:bg-[#c29f53] hover:text-white transition-all duration-300 flex items-center justify-center"
->
-  ✕
-</button>
+{storyOpen && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#2c3e34]/60 backdrop-blur-md"
+    onClick={() => setStoryOpen(false)}
+  >
+    <div
+      className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[#fdfbf7] p-5 sm:p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-[#c29f53]/30 rounded-sm"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="border border-[#c29f53]/20 h-full w-full p-5 sm:p-8 md:p-10 flex flex-col items-center justify-center relative">
 
-            {/* Content with Justified Text */}
-            <div className="w-full z-10">
-              <h3 className="font-cinzel text-3xl text-[#2c3e34] mb-8 tracking-widest uppercase text-center">Our Story</h3>
-              
-              <div className="text-sm leading-loose text-[#2c3e34] font-light text-justify hyphens-auto">
-                <p className="mb-4">
-                  I (Camille) and Nielle met on July 4, 2017, right after we graduated. I’m from Cavite and he’s from Zambales, and we were both working students at Jollibee in our respective provinces. After graduation, we were promoted as manager trainees and became batchmates for training in Ortigas.
-                </p>
-                
-                <p className="mb-4">
-                  Before the training, I reached out to one of the trainees from Zambales because I was nervous about not knowing anyone. She kindly let me stay with their group in their dorm. When I arrived, Danielle picked me up at the bus stop since I didn’t know the place yet—that was the first time we met.
-                </p>
+        <div className="absolute top-0 right-0 p-3 z-20">
+    <button
+      onClick={() => setStoryOpen(false)}
+      className="w-10 h-10 rounded-full bg-[#2c3e34]/10 hover:bg-[#c29f53] hover:text-white flex items-center justify-center"
+    >
+      ✕
+    </button>
+  </div>
 
-                <p>
-                  From there, we naturally got close. He helped me with my documents and made sure I was okay during the training. After we finished, we went on our first date at Megamall—and that’s where it all started.
-                </p>
-              </div>
-            </div>
+        {/* Content */}
+        <div className="w-full z-10">
+          <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl text-[#2c3e34] mb-5 sm:mb-8 tracking-widest uppercase text-center">
+            Our Story
+          </h3>
 
-            {/* Decorative Corner Flourishes */}
-            <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-[#c29f53]/30" />
-            <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-[#c29f53]/30" />
+          <div className="text-xs sm:text-sm md:text-base leading-relaxed sm:leading-loose text-[#2c3e34] font-light text-justify hyphens-auto">
+            <p className="mb-3 sm:mb-4">
+              I (Camille) and Nielle met on July 4, 2017, right after we graduated. I’m from Cavite and he’s from Zambales, and we were both working students at Jollibee in our respective provinces. After graduation, we were promoted as manager trainees and became batchmates for training in Ortigas.
+            </p>
+
+            <p className="mb-3 sm:mb-4">
+              Before the training, I reached out to one of the trainees from Zambales because I was nervous about not knowing anyone. She kindly let me stay with their group in their dorm. When I arrived, Danielle picked me up at the bus stop since I didn’t know the place yet—that was the first time we met.
+            </p>
+
+            <p>
+              From there, we naturally got close. He helped me with my documents and made sure I was okay during the training. After we finished, we went on our first date at Megamall—and that’s where it all started.
+            </p>
           </div>
         </div>
+
+        {/* Decorative Corner Flourishes */}
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 w-8 sm:w-12 h-8 sm:h-12 border-t-2 border-l-2 border-[#c29f53]/30" />
+        <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-8 sm:w-12 h-8 sm:h-12 border-b-2 border-r-2 border-[#c29f53]/30" />
       </div>
-    )}
+    </div>
+  </div>
+)}
 
 
       {/* FUNDAMENTALS MODAL */}
