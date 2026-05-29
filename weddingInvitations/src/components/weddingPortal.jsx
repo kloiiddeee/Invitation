@@ -21,6 +21,7 @@ export default function WeddingPortal() {
   const [storyOpen, setStoryOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [fundamentalsOpen, setFundamentalsOpen] = useState(false);
+  const [rsvpOpen, setRsvpOpen] = useState(false);
 
   const audioRef = useRef(null);
 
@@ -163,74 +164,61 @@ export default function WeddingPortal() {
           </button>
 
           <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Alfonso%2C+Cavite"
+            href="https://www.google.com/maps/dir/?api=1&destination=Vera+Santuario+Tagaytay&destination_place_id=ChIJeWTszKV7vTMRN3YUu5meYDA"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#2c3e34] text-white px-5 py-2 hover:bg-[#c29f53] transition shadow-lg"
+            className="
+              group
+              relative
+              overflow-hidden
+              flex items-center gap-2
+              bg-[#122b1f]
+              text-[#f4f2eb]
+              px-6
+              py-2.5
+              rounded-full
+              border border-[#c29f53]/20
+              font-montserrat
+              text-[10px]
+              tracking-[0.22em]
+              uppercase
+              font-medium
+              shadow-lg
+              transition-all duration-300
+              hover:bg-[#c29f53]
+              hover:text-[#122b1f]
+              hover:shadow-[0_0_25px_rgba(194,159,83,0.35)]
+              hover:scale-[1.03]
+              active:scale-[0.98]
+            "
           >
-            View Map
+            {/* Glow Hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.14)_0%,transparent_70%)]" />
+
+            {/* Map Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.8}
+              stroke="currentColor"
+              className="w-4 h-4 relative z-10"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 21s6-4.35 6-10a6 6 0 10-12 0c0 5.65 6 10 6 10z"
+              />
+              <circle cx="12" cy="11" r="2.5" />
+            </svg>
+
+            <span className="relative z-10">
+              View Map
+            </span>
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden z-50"
-        >
-          {mobileMenuOpen ? (
-            <X className="w-7 h-7" />
-          ) : (
-            <Menu className="w-7 h-7" />
-          )}
-        </button>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="absolute top-20 left-4 right-4 bg-white shadow-xl rounded-xl p-6 flex flex-col gap-6 md:hidden border border-[#c29f53]/10">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)}>
-              Invitation
-            </a>
-
-            <a href="#entourage" onClick={() => setMobileMenuOpen(false)}>
-              Entourage
-            </a>
-
-            <button
-              onClick={() => {
-                setStoryOpen(true);
-                setMobileMenuOpen(false);
-              }}
-              className="text-left"
-            >
-              Love Story
-            </button>
-
-            <button onClick={() => {setFundamentalsOpen(true); setMobileMenuOpen(false);}}className="text-left">
-              FUNDAMENTALS
-            </button>
-            
-            <button
-              onClick={toggleMusic}
-              className="flex items-center gap-2"
-            >
-              {isPlaying ? (
-                <>
-                  <Music className="w-5 h-5 text-[#c29f53]" />
-                  Pause Music
-                </>
-              ) : (
-                <>
-                  <Music2 className="w-5 h-5" />
-                  Play Music
-                </>
-              )}
-            </button>
-
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Vera+Santuario+Tagaytay&destination_place_id=ChIJeWTszKV7vTMRN3YUu5meYDA" target="_blank" rel="noopener noreferrer" className="hover:text-[#c29f53] transition underline">
-              View Map
-            </a>
-          </div>
-        )}
+        
       </nav>
 
       {/* MAIN */}
@@ -366,14 +354,13 @@ export default function WeddingPortal() {
                         Maps
                       </a>
                       <span>|</span>
-                      <span className="hover:text-[#c29f53] transition cursor-pointer underline">RSVP</span>
-                      <span>|</span>
-                      <a href="https://www.facebook.com/verasantuariotagaytay" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#c29f53] transition">
-                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                        </svg>
+
+                      <a href="https://www.facebook.com/verasantuariotagaytay" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#c29f53] transition underline">
                         FB Page
                       </a>
+                      
+                      <span>|</span>
+                      <span className="hover:text-[#c29f53] transition cursor-pointer underline">RSVP</span>
                     </div>
                   </div>
 
@@ -602,33 +589,146 @@ export default function WeddingPortal() {
       </div>
     </motion.section>
 
-      {/* FOOTER */}
+      {/* DESKTOP RSVP FOOTER */}
       <footer
-        className={`fixed bottom-0 w-full bg-[#f4f2eb]/90 backdrop-blur-md border-t border-[#2c3e34]/10 py-3 px-4 md:px-12 z-20 transition-all duration-1000 delay-[900ms] ease-out ${
-          isReady
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-full'
-        }`}
+        className={`
+          hidden md:block
+          fixed bottom-0 w-full
+          bg-[#f4f2eb]/90
+          backdrop-blur-md
+          border-t border-[#2c3e34]/10
+          py-3 px-12
+          z-20
+          transition-all duration-1000 delay-[900ms] ease-out
+          ${
+            isReady
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-full'
+          }
+        `}
       >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-
-          <span className="text-[9px] md:text-[10px] uppercase tracking-widest opacity-60 text-center">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] uppercase tracking-widest opacity-60">
             Kindly RSVP by November 15, 2026
           </span>
 
-          <div className="flex items-center gap-2 md:gap-4">
-            <button className="px-4 md:px-8 py-2 bg-[#2c3e34] text-white text-[9px] md:text-[10px] uppercase tracking-widest hover:bg-[#c29f53] transition rounded">
+          <div className="flex items-center gap-4">
+            <a
+              href="YOUR_ACCEPT_GOOGLE_FORM_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-2 bg-[#2c3e34] text-white text-[10px] uppercase tracking-widest hover:bg-[#c29f53] transition rounded"
+            >
               Accept
-            </button>
+            </a>
 
-            <button className="px-4 md:px-8 py-2 border border-[#2c3e34]/20 text-[#2c3e34] text-[9px] md:text-[10px] uppercase tracking-widest hover:bg-[#2c3e34]/5 transition rounded">
+            <a
+              href="YOUR_DECLINE_GOOGLE_FORM_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-2 border border-[#2c3e34]/20 text-[#2c3e34] text-[10px] uppercase tracking-widest hover:bg-[#2c3e34]/5 transition rounded"
+            >
               Decline
-            </button>
+            </a>
           </div>
         </div>
       </footer>
 
 
+{/* MOBILE NAV */}
+      <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-md bg-white/70 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl px-3 py-2">
+        <div className="flex items-center justify-between">
+
+          <a
+            href="#home"
+            className="flex flex-col items-center flex-1 text-[#2c3e34] hover:text-[#c29f53]"
+          >
+            <Leaf className="w-5 h-5" />
+
+            <span className="text-[9px] uppercase mt-1">
+              Home
+            </span>
+          </a>
+
+          <a
+            href="#entourage"
+            className="flex flex-col items-center flex-1 text-[#2c3e34] hover:text-[#c29f53]"
+          >
+            <Calendar className="w-5 h-5" />
+
+            <span className="text-[9px] uppercase mt-1">
+              Entourage
+            </span>
+          </a>
+
+          <button
+            onClick={() => setStoryOpen(true)}
+            className="flex flex-col items-center flex-1 text-[#2c3e34] hover:text-[#c29f53]"
+          >
+            <ChevronRight className="w-5 h-5" />
+
+            <span className="text-[9px] uppercase mt-1">
+              Story
+            </span>
+          </button>
+
+          <button
+            onClick={() => setRsvpOpen(true)}
+            className="
+              flex flex-col items-center justify-center flex-1
+              text-[#2c3e34]
+              hover:text-[#c29f53]
+              transition-all duration-300
+              active:scale-95
+            "
+          >
+            <Calendar className="w-5 h-5" />
+
+            <span className="text-[9px] mt-1 uppercase tracking-wider">
+              RSVP
+            </span>
+          </button>
+
+          <button
+            onClick={() => setFundamentalsOpen(true)}
+            className="flex flex-col items-center flex-1 text-[#2c3e34] hover:text-[#c29f53]"
+          >
+            <Shirt className="w-5 h-5" />
+
+            <span className="text-[9px] uppercase mt-1">
+              Guide
+            </span>
+          </button>
+
+          <button
+            onClick={toggleMusic}
+            className="flex flex-col items-center flex-1 text-[#2c3e34] hover:text-[#c29f53]"
+          >
+            {isPlaying ? (
+              <Music className="w-5 h-5 text-[#c29f53] animate-pulse" />
+            ) : (
+              <Music2 className="w-5 h-5" />
+            )}
+
+            <span className="text-[9px] uppercase mt-1">
+              Music
+            </span>
+          </button>
+
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Vera+Santuario+Tagaytay&destination_place_id=ChIJeWTszKV7vTMRN3YUu5meYDA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center flex-1 text-[#2c3e34] hover:text-[#c29f53]"
+          >
+            <MapPin className="w-5 h-5" />
+
+            <span className="text-[9px] uppercase mt-1">
+              Map
+            </span>
+          </a>
+        </div>
+      </div>
 
       
       {/* Story Modal */}
@@ -642,12 +742,13 @@ export default function WeddingPortal() {
           <div className="border border-[#c29f53]/20 h-full w-full p-8 md:p-10 flex flex-col items-center justify-center relative">
             
             {/* CLOSE BUTTON */}
-            <button
-              onClick={() => setStoryOpen(false)}
-              className="absolute top-5 right-5 w-10 h-10 rounded-full bg-[#2c3e34]/5 hover:bg-[#c29f53] hover:text-white transition-all duration-300 flex items-center justify-center shadow-sm"
-            >
-              ✕
-            </button>
+            {/* CLOSE BUTTON */}
+<button
+  onClick={() => setStoryOpen(false)}
+  className="absolute top-5 right-5 w-10 h-10 rounded-full bg-[#2c3e34]/5 hover:bg-[#c29f53] hover:text-white transition-all duration-300 flex items-center justify-center"
+>
+  ✕
+</button>
 
             {/* Content with Justified Text */}
             <div className="w-full z-10">
@@ -851,6 +952,116 @@ export default function WeddingPortal() {
           </div>
         </div>
       )}
+
+
+      {/* RSVP MODAL */}
+    {rsvpOpen && (
+      <div
+        className="fixed inset-0 z-[120] bg-black/60 backdrop-blur-md flex items-center justify-center p-4"
+        onClick={() => setRsvpOpen(false)}
+      >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="
+            relative
+            w-full
+            max-w-md
+            rounded-[30px]
+            bg-[#fdfbf7]
+            border border-white/20
+            shadow-[0_20px_80px_rgba(0,0,0,0.25)]
+            overflow-hidden
+          "
+        >
+
+          {/* Decorative Glow */}
+          <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#c29f53]/10 blur-3xl rounded-full"></div>
+
+          {/* Close Button */}
+          <button
+            onClick={() => setRsvpOpen(false)}
+            className="
+              absolute top-5 right-5 z-20
+              w-10 h-10 rounded-full
+              bg-[#2c3e34]/5
+              hover:bg-[#c29f53]
+              hover:text-white
+              transition-all duration-300
+              flex items-center justify-center
+            "
+          >
+            ✕
+          </button>
+
+          <div className="relative z-10 p-8">
+
+            <p className="text-[10px] uppercase tracking-[0.4em] text-[#c29f53] mb-3">
+              RSVP Reminder
+            </p>
+
+            <h3 className="font-cinzel text-3xl text-[#2c3e34] mb-4">
+              Kindly RSVP
+            </h3>
+
+            <p className="text-sm leading-relaxed text-[#2c3e34]/70 mb-8">
+              Please confirm your attendance on or before
+              <span className="font-semibold text-[#2c3e34]">
+                {" "}November 15, 2026
+              </span>.
+            </p>
+
+            <div className="flex flex-col gap-4">
+
+              {/* ACCEPT */}
+              <a
+                href="YOUR_ACCEPT_GOOGLE_FORM_LINK"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  w-full
+                  text-center
+                  py-4
+                  rounded-2xl
+                  bg-[#2c3e34]
+                  text-white
+                  uppercase
+                  tracking-[0.25em]
+                  text-[11px]
+                  hover:bg-[#c29f53]
+                  hover:text-[#2c3e34]
+                  transition-all duration-300
+                "
+              >
+                Accept Invitation
+              </a>
+
+              {/* DECLINE */}
+              <a
+                href="YOUR_DECLINE_GOOGLE_FORM_LINK"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  w-full
+                  text-center
+                  py-4
+                  rounded-2xl
+                  border border-[#2c3e34]/15
+                  text-[#2c3e34]
+                  uppercase
+                  tracking-[0.25em]
+                  text-[11px]
+                  hover:bg-[#2c3e34]/5
+                  transition-all duration-300
+                "
+              >
+                Decline Invitation
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
 
     </div>
   );

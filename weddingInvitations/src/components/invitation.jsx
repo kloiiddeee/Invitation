@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -5,7 +7,14 @@ export default function Invitation() {
   const [confetti, setConfetti] = useState([]);
   const navigate = useNavigate();
 
-    
+  const weddingDate = new Date('2026-12-15T00:00:00');
+
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     
@@ -25,12 +34,47 @@ export default function Invitation() {
     setConfetti(pieces);
   }, []);
 
+  useEffect(() => {
+  const interval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate.getTime() - now;
+
+    if (distance <= 0) {
+      clearInterval(interval);
+      setTimeLeft({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      });
+      return;
+    }
+
+    setTimeLeft({
+      days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+      hours: Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+      ),
+      minutes: Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+      ),
+      seconds: Math.floor(
+        (distance % (1000 * 60)) / 1000
+      ),
+    });
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
+
   const handleOpenInvitation = () => {
     navigate('/Wedding');
     };
 
   return (
-    <div className="h-screen w-screen bg-[#04120b] flex flex-col items-center justify-center p-6 text-center select-none antialiased relative overflow-hidden">
+    <div className="min-h-[100dvh] w-full bg-[#04120b] flex flex-col items-center justify-start md:justify-center px-4 py-6 text-center select-none antialiased relative overflow-x-hidden overflow-y-auto">
       
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500&family=Mr+De+Haviland&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -111,10 +155,10 @@ export default function Invitation() {
 
       {/* ----------------------------------- */}
 
-      <div className="relative z-10 flex flex-col items-center w-full max-w-5xl h-full justify-center py-4">
+      <div className="relative z-10 flex flex-col items-center w-full max-w-5xl min-h-screen md:min-h-0 justify-start md:justify-center py-8 md:py-4 min-h-[100dvh] md:min-h-0">
         
         {/* --- HEADER SECTION --- */}
-        <div className="mb-6 w-full px-4 flex flex-col items-center text-center shrink-0">
+        <div className="mb-4 md:mb-6 w-full px-3 md:px-4 flex flex-col items-center text-center shrink-0 gap-1 md:gap-0">
           <p 
             className="animate-reveal font-montserrat text-[#8ca89a] text-[10px] md:text-xs tracking-[0.35em] uppercase font-semibold mb-2 drop-shadow-sm"
             style={{ animationDelay: '150ms' }}
@@ -142,7 +186,18 @@ export default function Invitation() {
 
 
         <div 
-          className="animate-reveal relative w-full max-w-[840px] aspect-[1.75/1] max-h-[460px] bg-[#f4f2eb] text-[#0d2e20] rounded-[2rem] px-8 py-10 md:px-14 md:py-12 shadow-[0_30px_70px_rgba(0,0,0,0.8)] border border-white/10 flex flex-col items-center justify-center box-border transform transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1) hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)] group/card"
+          className="animate-reveal relative w-full max-w-[840px]
+min-h-[420px] sm:min-h-[480px] md:min-h-0 md:aspect-[1.75/1]
+bg-[#f4f2eb] text-[#0d2e20] rounded-[2rem]
+px-4 sm:px-6 md:px-14
+py-8 sm:py-10 md:py-12
+shadow-[0_30px_70px_rgba(0,0,0,0.8)]
+border border-white/10
+flex flex-col items-center justify-center
+box-border transform transition-all duration-500
+hover:-translate-y-2 hover:scale-[1.015]
+hover:shadow-[0_40px_80px_rgba(0,0,0,0.9)]
+group/card"
           style={{ animationDelay: '750ms' }}
         >
           
@@ -178,8 +233,7 @@ export default function Invitation() {
             >
               Neille & Camille
             </h2>
-            
-            55
+     
             <div 
               className="animate-reveal w-full max-w-[260px] my-3 flex items-center justify-center opacity-90"
               style={{ animationDelay: '1200ms' }}
@@ -200,25 +254,60 @@ export default function Invitation() {
               THE GARDEN WEDDING CELEBRATION
             </p>
             
+
+  <p 
+  className="animate-reveal font-montserrat text-[9px] md:text-[11px] leading-[1.6] max-w-md font-normal tracking-[0.03em] text-[#2c3d33] mb-1 px-1"
+  style={{ animationDelay: '1400ms' }}
+></p>
+
+{/* COUNTDOWN */}
+<div
+  className="animate-reveal flex items-center justify-center gap-2 md:gap-3 mb-2 flex-wrap"
+  style={{ animationDelay: '1475ms' }}
+>
+  {[
+    { label: 'Days', value: timeLeft.days },
+    { label: 'Hours', value: timeLeft.hours },
+    { label: 'Minutes', value: timeLeft.minutes },
+    { label: 'Seconds', value: timeLeft.seconds },
+  ].map((item, index) => (
+    <div
+      key={index}
+      className="flex flex-col items-center justify-center bg-[#122b1f] text-[#f4f2eb] rounded-lg px-2.5 py-2 min-w-[56px] md:min-w-[70px] shadow-md border border-[#c29f53]/15"
+    >
+      <span className="font-cinzel text-lg md:text-2xl leading-none">
+        {String(item.value).padStart(2, '0')}
+      </span>
+
+      <span className="font-montserrat text-[7px] md:text-[8px] uppercase tracking-[0.18em] text-[#c29f53] mt-1">
+        {item.label}
+      </span>
+    </div>
+  ))}
+</div>
+
             <p 
-              className="animate-reveal font-montserrat text-[11px] md:text-[13px] leading-[1.75] max-w-md font-normal tracking-[0.04em] text-[#2c3d33] mb-6 px-2"
+              className="animate-reveal font-montserrat text-[11px] md:text-[13px] leading-[1.75] max-w-md font-normal tracking-[0.04em] text-[#2c3d33] mb-4 md:mb-6 px-2"
               style={{ animationDelay: '1400ms' }}
             >
               Crossing oceans, lands, and skies to pledge forever.<br />
               <span className="opacity-95 font-light">Click below to begin the journey to our garden gates.</span>
             </p>
+
+            
             
             {/* Dark Pill Button */}
             <button 
               onClick={handleOpenInvitation}
-              className="animate-reveal group/btn flex items-center justify-center gap-2 bg-[#122b1f] text-[#f4f2eb] text-[11px] md:text-xs font-montserrat tracking-[0.15em] font-medium py-3 px-8 rounded-full shadow-lg transition-all duration-300 relative overflow-hidden active:scale-[0.98] hover:shadow-[0_0_25px_rgba(194,159,83,0.4)]"
+              className="animate-reveal group/btn flex items-center justify-center gap-2 bg-[#122b1f] text-[#f4f2eb] text-[11px] md:text-xs font-montserrat tracking-[0.15em] font-medium py-2.5 sm:py-3 px-6 sm:px-8 rounded-full shadow-lg transition-all duration-300 relative overflow-hidden active:scale-[0.98] hover:shadow-[0_0_25px_rgba(194,159,83,0.4)]"
               style={{ animationDelay: '1550ms' }}
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,244,214,0.12)_0%,transparent_70%)] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <span className="relative z-10">Open Invitation</span>
               <span className="text-xs transition-transform duration-300 group-hover/btn:translate-x-1.5 relative z-10">➔</span>
             </button>
-            
+
+
           </div>
 
           {/* BOTTOM RIGHT CUSTOM CORNER GEOMETRY (Botanical - Rotated 180deg) */}
