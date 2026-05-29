@@ -305,7 +305,7 @@ export default function WeddingPortal() {
                     <span className="w-6 h-[1px] bg-[#c29f53]/50 inline-block transition-all duration-500 group-hover:w-12"></span> Our Invitation <span className="w-6 h-[1px] bg-[#c29f53]/50 inline-block transition-all duration-500 group-hover:w-12"></span>
                   </p>
                   <h1 className="font-cinzel text-2xl lg:text-3xl mb-3 text-[#2c3e34] transition-colors duration-300 group-hover:text-[#1a422a]">A Garden Ceremony Celebrating Union</h1>
-                  <p className="text-sm leading-relaxed opacity-80">After seasons apart, we request the honor of your presence as we pledge our vows under the open sky of Calabarzon. Your love has been our compass through every distance.</p>
+                  <p className="text-sm leading-relaxed opacity-80">After seasons apart, we request the honor of your presence as we pledge our vows under the open sky of Tagaytay. Your love has been our compass through every distance.</p>
                 </div>
               </div>
 
